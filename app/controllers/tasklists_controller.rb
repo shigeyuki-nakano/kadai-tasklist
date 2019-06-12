@@ -28,9 +28,23 @@ class TasklistsController < ApplicationController
     end 
     
     def update
+        @tasklist = Tasklist.find(params[:id])
+        
+        if @tasklist.update(tasklist_params)
+            flash[:success] = 'Tasklistは正常に更新されました'
+            redirect_to @tasklist
+        else
+            flash.now[:danger] = 'Tasklistは更新されませんでした'
+            render :edit
+        end
     end 
     
     def destroy
+        @tasklist = Tasklist.find(params[:id])
+        @tasklist.destroy
+        
+        flash[:success] = 'Tasklistは正常に削除されました'
+        redirect_to tasklists_url
     end 
     
     private

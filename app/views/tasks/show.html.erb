@@ -1,0 +1,7 @@
+<h1><%= current_user.name %>さんのタスク詳細ページ</h1>
+
+<p>ステータス:<%= @task.status %></p>
+<p>タスク:<%= @task.content %></p>
+
+<%= link_to 'このタスクを編集する', edit_task_path, class: 'btn btn-light' %>
+<%= link_to 'このタスクを削除する', @task, method: :delete, date: { cofirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-sm' %>

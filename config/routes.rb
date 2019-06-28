@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'toppages#index'
+  root to: 'tasks#index'
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   
-  resources :tasks, except: [:index]
+  resources :tasks
   resources :users, only: [:show, :new, :create]
 end

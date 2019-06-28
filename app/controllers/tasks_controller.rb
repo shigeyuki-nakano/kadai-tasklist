@@ -10,7 +10,7 @@ class TasksController < ApplicationController
         end
     end
     
-    def show 
+    def show
     end
 
     def new
@@ -24,8 +24,9 @@ class TasksController < ApplicationController
             flash[:success] = 'Taskが正常に投稿されました'
             redirect_to root_path
         else
+            @tasks = current_user.tasks.order(id: :desc).page(params[:page])
             flash.now[:danger] = 'Taskが投稿されませんでした'
-            render 'toppages/index'
+            render 'tasks/index'
         end
     end 
     

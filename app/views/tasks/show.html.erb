@@ -1,4 +1,4 @@
-<% if current_user == @user %>
+<% if current_user.tasks.find_by(id: params[:id]) %>
     <h1><%= current_user.name %>さんのタスク詳細ページ</h1>
     
     <p>ステータス:<%= @task.status %></p>

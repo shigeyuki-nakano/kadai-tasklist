@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
-    before_action :set_task, only: [:show, :edit, :update]
-    before_action :require_user_logged_in
-    before_action :correct_user, only: [:destroy]
+    before_action :require_user_logged_in, except: [:index]
+    before_action :correct_user, only: [:show, :edit, :update, :destroy]
     
     def index
         if logged_in?
@@ -26,7 +25,7 @@ class TasksController < ApplicationController
         else
             @tasks = current_user.tasks.order(id: :desc).page(params[:page])
             flash.now[:danger] = 'Taskが投稿されませんでした'
-            render 'tasks/index'
+            render :new
         end
     end 
     
@@ -51,10 +50,6 @@ class TasksController < ApplicationController
     end 
     
     private
-    
-    def set_task
-       @task = Task.find(params[:id]) 
-    end
     
     # Strong Parameter
     def task_params

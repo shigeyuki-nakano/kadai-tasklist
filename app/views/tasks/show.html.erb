@@ -1,12 +1,7 @@
-<% if current_user.tasks.find_by(id: params[:id]) %>
-    <h1><%= current_user.name %>さんのタスク詳細ページ</h1>
+<h1><%= current_user.name %>さんのタスク詳細ページ</h1>
     
-    <p>ステータス:<%= @task.status %></p>
-    <p>タスク:<%= @task.content %></p>
-    
-    <%= link_to 'このタスクを編集する', edit_task_path, class: 'btn btn-light btn-sm' %>
-    <%= link_to 'このタスクを削除する', @task, method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-sm' %>
-<% else %>
-    <p>あなたのページではありません</p>
-    <%= link_to 'トップページへ', root_path %>
-<% end %>
+<p>ステータス:<%= @task.status %></p>
+<p>タスク:<%= @task.content %></p>
+
+<%= link_to 'このタスクを編集する', edit_task_path, class: 'btn btn-light btn-sm' %>
+<%= link_to 'このタスクを削除する', @task, method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-sm' %>

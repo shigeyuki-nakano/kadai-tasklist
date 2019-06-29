@@ -1,12 +1,10 @@
 <!--投稿一覧表示-->
-
 <ul class="list-unstyled">
     <% tasks.each do |task| %>
         
         <li class="media mb-3 border border-info">
             <div class="media-body">
                 <div>
-                    <%= link_to task.user.name, user_path(task.user) %>
                     <span class="text-muted">
                         posted at <%= task.created_at %>
                     </span>
